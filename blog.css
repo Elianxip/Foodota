@@ -1,0 +1,58 @@
+.blog-page {
+    background-image: url(fondo.blog.png);
+    font-family: 'Poppins', sans-serif;
+    color: #ffa909;
+    padding: 20px;
+  }
+  
+  header {
+    background-color: #ffc400;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .blog-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  
+  .entrada-blog {
+    background-color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+  
+  .entrada-blog img {
+    width: 50%;
+    border-radius: 70px;
+    margin-top: 40px;
+  }
+  
+  .entrada-blog h2 {
+    color: #ff9800;
+  }
+  
+  .entrada-blog a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ff9800;
+    text-decoration: underline;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 15px;
+    background-color: #eee;
+  }
+  

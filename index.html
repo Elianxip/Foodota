@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Foodota - Proyecto Final</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <h1>🍔 Foodota</h1>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="restaurante.html">Restaurante</a>
+        <a href="blog.html">Blog</a>
+        <a href="vendedores.html">Vendedores</a>
+      </nav>
+      <button onclick="location.href='restaurante.html'" class="btn-amarillo">Buscar Restaurante</button>
+  </header>
+  <section id="inicio">...</section>
+<section id="restaurante">...</section>
+<section id="blog">...</section>
+<section id="vendedores">...</section>
+
+  <!-- Sección principal -->
+  <section class="hero">
+    <div class="texto-hero">
+      <h2>Pide comida saludable y fresca en cualquier momento</h2>
+      <p>Los platos mas exquisitos se encuentran en Foodota.</p>
+      <div class="buscador">
+        <input type="text" id="busquedaProducto" placeholder="¿Qué buscas? Ej: Pizza, Hamburguesa">
+        <input type="text" id="busquedaUbicacion" placeholder="Selecciona una ubicación">
+        <button class="btn-amarillo" onclick="realizarBusqueda()">Buscar</button>
+      </div>
+      
+      
+
+  </section>
+ 
+
+  <script>
+    function realizarBusqueda() {
+      // Obtener los valores de los inputs
+      var producto = document.getElementById("busquedaProducto").value;
+      var ubicacion = document.getElementById("busquedaUbicacion").value;
+  
+      // Verificar que los campos no estén vacíos
+      if (producto.trim() === "" || ubicacion.trim() === "") {
+        alert("Por favor, ingresa los valores de búsqueda.");
+        return; // Evita que la búsqueda se haga si están vacíos
+      }
+  
+      // Mostrar un mensaje con los valores que el usuario ingresó
+      alert("Buscando: " + producto + " en " + ubicacion);
+    }
+  </script>
+  <!-- Botón flotante -->
+<a href="javascript:void(0);" class="btn-flotante" onclick="abrirModal()">Contactar</a>
+
+<!-- Modal de contacto -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">&times;</span>
+    <h2>Formulario de Contacto</h2>
+    <form>
+      <input type="text" placeholder="Nombre" required><br>
+      <input type="email" placeholder="Correo electrónico" required><br>
+      <textarea placeholder="Mensaje" required></textarea><br>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<!-- CSS para el botón flotante y el modal -->
+<style>
+  .btn-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffcc00;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .btn-flotante:hover {
+    transform: scale(1.1);
+  }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+
+<!-- JavaScript para abrir y cerrar el modal -->
+<script>
+  // Función para abrir el modal
+  function abrirModal() {
+    document.getElementById("modal").style.display = "block";
+  }
+
+  // Función para cerrar el modal
+  function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+</script>
+
+<section class="oferta-especial" id="ofertaEspecial">
+    <h2>🎉 ¡Oferta Especial del Día! 🎉</h2>
+    <div class="oferta-box">
+      <img id="imagenOferta" alt="Imagen de la oferta">
+      <h3 id="tituloOferta"></h3>
+      <p id="descripcionOferta"></p>
+      <span id="precioOferta"></span>
+    </div>
+  </section>
+
+  <script>
+    const ofertas = [
+      {
+        titulo: "Combo Burger + Papas",
+        descripcion: "¡Incluye refresco gratis!",
+        precio: "$199",
+        imagen: "burger.png"
+      },
+      {
+        titulo: "Pizza Familiar",
+        descripcion: "2x1 solo hoy",
+        precio: "$350",
+        imagen: "pizza.png"
+      },
+      {
+        titulo: "Taco Party",
+        descripcion: "3 tacos por el precio de 2",
+        precio: "$150",
+        imagen: "tacos.png"
+      },
+      {
+        titulo: "Pollo Frito XL",
+        descripcion: "Con papas y refresco",
+        precio: "$249",
+        imagen: "Pollo.frito.png"
+      },
+      {
+        titulo: "Sushi Box",
+        descripcion: "10 piezas + bebida",
+        precio: "$299",
+        imagen: "sushi.png"
+      },
+    ];
+  
+    let indice = 0;
+  
+    function mostrarOferta() {
+      const ofertaDiv = document.getElementById("ofertaEspecial");
+      ofertaDiv.classList.add("fade-out");
+  
+      setTimeout(() => {
+        const oferta = ofertas[indice];
+        document.getElementById("tituloOferta").textContent = oferta.titulo;
+        document.getElementById("descripcionOferta").textContent = oferta.descripcion;
+        document.getElementById("precioOferta").textContent = oferta.precio;
+        document.getElementById("imagenOferta").src = oferta.imagen;
+  
+        ofertaDiv.classList.remove("fade-out");
+  
+        indice = (indice + 1) % ofertas.length;
+      }, 1000); // Tiempo del fade-out (1 segundo)
+    }
+  
+    mostrarOferta();
+    setInterval(mostrarOferta, 5000);
+  </script>
+
+<button onclick="location.href='menu.html'" class="btn-amarillo">Ver Menú</button>
+  
+  
+
+  
+
+</body>
+</html>
